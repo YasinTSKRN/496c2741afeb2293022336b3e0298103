@@ -85,7 +85,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sgA-wb-Jl0" userLabel="Endurance">
                                                 <rect key="frame" x="0.0" y="0.0" width="364" height="172.5"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NNF-1k-Ci0">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dayanıklılık" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NNF-1k-Ci0">
                                                         <rect key="frame" x="10" y="10" width="344" height="45"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
@@ -93,6 +93,9 @@
                                                     </label>
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="hHN-IW-xj8">
                                                         <rect key="frame" x="8" y="132.5" width="348" height="31"/>
+                                                        <connections>
+                                                            <action selector="sliderUpdated:" destination="BYZ-38-t0r" eventType="valueChanged" id="wR4-ob-YXE"/>
+                                                        </connections>
                                                     </slider>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -109,7 +112,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ws3-vt-GTE" userLabel="Speed">
                                                 <rect key="frame" x="0.0" y="182.5" width="364" height="173"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vte-tW-NYJ">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hız" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vte-tW-NYJ">
                                                         <rect key="frame" x="10" y="10" width="344" height="45"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
@@ -117,6 +120,9 @@
                                                     </label>
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="ygi-Pq-07L">
                                                         <rect key="frame" x="8" y="133" width="348" height="31"/>
+                                                        <connections>
+                                                            <action selector="sliderUpdated:" destination="BYZ-38-t0r" eventType="valueChanged" id="Rir-JU-p1Q"/>
+                                                        </connections>
                                                     </slider>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -133,7 +139,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nsj-KY-hxn" userLabel="Capacity">
                                                 <rect key="frame" x="0.0" y="365.5" width="364" height="172.5"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J3a-ah-QtK">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kapasite" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J3a-ah-QtK">
                                                         <rect key="frame" x="10" y="10" width="344" height="45"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
@@ -141,6 +147,9 @@
                                                     </label>
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="XLb-36-ree">
                                                         <rect key="frame" x="8" y="132.5" width="348" height="31"/>
+                                                        <connections>
+                                                            <action selector="sliderUpdated:" destination="BYZ-38-t0r" eventType="valueChanged" id="foD-gO-IQ8"/>
+                                                        </connections>
                                                     </slider>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -185,8 +194,12 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="leftPoints" destination="uEq-Ch-7hN" id="uAV-NT-xPz"/>
+                        <outlet property="capacitySlider" destination="XLb-36-ree" id="Lrb-VK-IZL"/>
+                        <outlet property="continueButton" destination="bDm-Qo-M7r" id="vqS-Ra-UzO"/>
+                        <outlet property="enduranceSlider" destination="hHN-IW-xj8" id="uvy-Ck-sGV"/>
+                        <outlet property="leftPointsLabel" destination="uEq-Ch-7hN" id="uAV-NT-xPz"/>
                         <outlet property="nameField" destination="SKK-0A-ndA" id="TDo-HE-zzW"/>
+                        <outlet property="speedSlider" destination="ygi-Pq-07L" id="xvU-eh-pAH"/>
                         <segue destination="HPb-36-gPf" kind="presentation" identifier="OpenTabbar" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="OAA-Xh-YkI"/>
                     </connections>
                 </viewController>
@@ -659,6 +672,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="BF9-c8-zgd"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fTX-P6-fxT">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>

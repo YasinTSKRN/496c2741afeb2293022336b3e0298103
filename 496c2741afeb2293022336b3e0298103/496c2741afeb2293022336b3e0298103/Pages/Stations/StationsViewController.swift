@@ -23,6 +23,8 @@ class StationsViewController: UIViewController {
     @IBOutlet weak var destinationName: UILabel!
     @IBOutlet weak var destinationStock: UILabel!
     @IBOutlet weak var destinationCost: UILabel!
+
+    var spaceShip: SpaceShip = SpaceShip(name: "", speed: 0, capacity: 0, endurance: 0)
     
     override func viewDidLoad() {
         super.viewDidLoad()

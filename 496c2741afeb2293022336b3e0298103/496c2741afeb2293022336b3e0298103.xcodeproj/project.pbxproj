@@ -15,6 +15,7 @@
 		ADECC92E27F090CC00B4C835 /* StationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADECC92D27F090CC00B4C835 /* StationsViewModel.swift */; };
 		ADECC93027F0917900B4C835 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADECC92F27F0917900B4C835 /* FavoritesViewController.swift */; };
 		ADECC93227F0918C00B4C835 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADECC93127F0918C00B4C835 /* FavoritesViewModel.swift */; };
+		ADECC93527F0C70800B4C835 /* SpaceShip.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADECC93427F0C70800B4C835 /* SpaceShip.swift */; };
 		ADFECA9727F0785000F69DE4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFECA9627F0785000F69DE4 /* AppDelegate.swift */; };
 		ADFECA9927F0785000F69DE4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFECA9827F0785000F69DE4 /* SceneDelegate.swift */; };
 		ADFECA9B27F0785000F69DE4 /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFECA9A27F0785000F69DE4 /* SetupViewController.swift */; };
@@ -33,6 +34,7 @@
 		ADECC92D27F090CC00B4C835 /* StationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationsViewModel.swift; sourceTree = "<group>"; };
 		ADECC92F27F0917900B4C835 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		ADECC93127F0918C00B4C835 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
+		ADECC93427F0C70800B4C835 /* SpaceShip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceShip.swift; sourceTree = "<group>"; };
 		ADFECA9327F0785000F69DE4 /* 496c2741afeb2293022336b3e0298103.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 496c2741afeb2293022336b3e0298103.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADFECA9627F0785000F69DE4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ADFECA9827F0785000F69DE4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 		ADECC91D27F0836400B4C835 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				ADECC93327F0C6F500B4C835 /* Data */,
 				ADECC91E27F0837000B4C835 /* Response */,
 			);
 			path = Model;
@@ -132,6 +135,14 @@
 				ADECC93127F0918C00B4C835 /* FavoritesViewModel.swift */,
 			);
 			path = Favorites;
+			sourceTree = "<group>";
+		};
+		ADECC93327F0C6F500B4C835 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				ADECC93427F0C70800B4C835 /* SpaceShip.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		ADFECA8A27F0785000F69DE4 = {
@@ -285,6 +296,7 @@
 			files = (
 				ADECC93227F0918C00B4C835 /* FavoritesViewModel.swift in Sources */,
 				ADFECA9B27F0785000F69DE4 /* SetupViewController.swift in Sources */,
+				ADECC93527F0C70800B4C835 /* SpaceShip.swift in Sources */,
 				ADECC93027F0917900B4C835 /* FavoritesViewController.swift in Sources */,
 				ADFECA9727F0785000F69DE4 /* AppDelegate.swift in Sources */,
 				ADECC92B27F090AA00B4C835 /* StationsViewController.swift in Sources */,
