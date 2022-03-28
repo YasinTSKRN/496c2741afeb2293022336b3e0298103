@@ -12,7 +12,7 @@ struct Station: Decodable {
     let coordinateX: Double
     let coordinateY: Double
     let capacity: Int
-    let stock: Int
+    var stock: Int
     let need: Int
 }
 

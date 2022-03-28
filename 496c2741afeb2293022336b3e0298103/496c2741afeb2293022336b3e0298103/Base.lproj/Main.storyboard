@@ -380,6 +380,9 @@
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="chevron.left" catalog="system"/>
+                                                <connections>
+                                                    <action selector="previousStationAction:" destination="g9C-6Q-Ye8" eventType="touchUpInside" id="QhC-ot-igq"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L1M-iI-ICN">
                                                 <rect key="frame" x="324" y="192" width="40" height="40"/>
@@ -390,6 +393,9 @@
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="chevron.right" catalog="system"/>
+                                                <connections>
+                                                    <action selector="nextStationAction:" destination="g9C-6Q-Ye8" eventType="touchUpInside" id="nEs-po-w2Y"/>
+                                                </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RcU-rN-al8">
                                                 <rect key="frame" x="55" y="85" width="254" height="254"/>
@@ -434,7 +440,10 @@
                                                             <constraint firstAttribute="height" constant="40" id="mJ6-ga-XWI"/>
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="filled" title="Travel"/>
+                                                        <buttonConfiguration key="configuration" style="filled" title="Teslimat"/>
+                                                        <connections>
+                                                            <action selector="travelAction:" destination="g9C-6Q-Ye8" eventType="touchUpInside" id="On5-8y-M5b"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -518,9 +527,12 @@
                         <outlet property="eusValue" destination="Sa2-Jl-nBA" id="jhk-Py-5J0"/>
                         <outlet property="integrityValue" destination="FeX-O2-gZK" id="yMz-QF-dQt"/>
                         <outlet property="name" destination="yEY-BU-Vhq" id="2Zh-5K-wkj"/>
+                        <outlet property="nextButton" destination="L1M-iI-ICN" id="hIv-bH-Xf5"/>
+                        <outlet property="previousButton" destination="qhX-ka-EBA" id="PXw-Ba-bRB"/>
+                        <outlet property="remainingTime" destination="sTY-dQ-WLP" id="RSt-5x-UrI"/>
                         <outlet property="searchField" destination="b8b-2N-3di" id="1RN-AD-x5u"/>
                         <outlet property="stationContainer" destination="RcU-rN-al8" id="bIV-mF-DFX"/>
-                        <outlet property="timeValue" destination="sTY-dQ-WLP" id="RSt-5x-UrI"/>
+                        <outlet property="travelButton" destination="jgA-uB-y1K" id="OVm-AE-Yvb"/>
                         <outlet property="ugsValue" destination="pp5-yj-AgR" id="EQR-mo-tYu"/>
                     </connections>
                 </viewController>
