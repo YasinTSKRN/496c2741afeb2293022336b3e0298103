@@ -427,6 +427,9 @@
                                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
+                                                        <connections>
+                                                            <action selector="favoriteAction:" destination="g9C-6Q-Ye8" eventType="touchUpInside" id="JGt-Zb-VTq"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Laa-jX-Q41">
                                                         <rect key="frame" x="20" y="80" width="214" height="89"/>
@@ -525,6 +528,7 @@
                         <outlet property="destinationStock" destination="7WV-08-ia3" id="nIl-qD-U2B"/>
                         <outlet property="dsValue" destination="DAL-vE-9nx" id="AzC-TX-NDS"/>
                         <outlet property="eusValue" destination="Sa2-Jl-nBA" id="jhk-Py-5J0"/>
+                        <outlet property="favoriteButton" destination="rmH-tN-rKA" id="8im-FA-Kah"/>
                         <outlet property="integrityValue" destination="FeX-O2-gZK" id="yMz-QF-dQt"/>
                         <outlet property="name" destination="yEY-BU-Vhq" id="2Zh-5K-wkj"/>
                         <outlet property="nextButton" destination="L1M-iI-ICN" id="hIv-bH-Xf5"/>

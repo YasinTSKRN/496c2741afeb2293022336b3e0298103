@@ -26,9 +26,15 @@ class StationsViewController: UIViewController {
     @IBOutlet weak var previousButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var travelButton: UIButton!
+    @IBOutlet weak var favoriteButton: UIButton!
     
     var spaceShip: SpaceShip = SpaceShip(name: "", speed: 0, capacity: 0, endurance: 0)
     private var shownStationIndex: Int = 1
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.showStation(at: self.shownStationIndex)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,6 +84,7 @@ class StationsViewController: UIViewController {
         previousButton.isEnabled = self.shownStationIndex != 1
         nextButton.isEnabled = self.shownStationIndex != viewModel.availableStations.count - 1
         travelButton.isEnabled = viewModel.canTravel(to: index)
+        favoriteButton.setImage(FavoriteManager.shared.isFavorited(station: station) ? UIImage.init(systemName: "star.fill") : UIImage.init(systemName: "star"), for: .normal)
     }
     @IBAction func previousStationAction(_ sender: Any) {
         self.shownStationIndex -= 1
@@ -93,7 +100,18 @@ class StationsViewController: UIViewController {
         fillInfo()
         self.finishGame()
     }
-
+    @IBAction func favoriteAction(_ sender: Any) {
+        guard shownStationIndex < viewModel.availableStations.count else { return }
+        let station = viewModel.availableStations[shownStationIndex]
+        let isFavorited = FavoriteManager.shared.isFavorited(station: station)
+        if isFavorited {
+            FavoriteManager.shared.removeFavorite(station: station)
+        } else {
+            FavoriteManager.shared.addFavorite(station: station)
+        }
+        self.showStation(at: self.shownStationIndex)
+    }
+    
     func finishGame() {
         if !viewModel.isFinished() {
             return

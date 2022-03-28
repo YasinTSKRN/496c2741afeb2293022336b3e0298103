@@ -17,10 +17,10 @@ class FavoritesViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        viewModel.favorites.append(Station(name: "test1", coordinateX: 1, coordinateY: 1, capacity: 1000, stock: 500, need: 500))
-        viewModel.favorites.append(Station(name: "test2", coordinateX: 1, coordinateY: 1, capacity: 1000, stock: 500, need: 500))
         favoritesTable.delegate = self
         favoritesTable.dataSource = self
+        viewModel.refreshFavorites()
+        favoritesTable.reloadData()
     }
 }
 
@@ -34,7 +34,7 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "FavoriteCell", for: indexPath) as? FavoriteCell {
             let station = self.viewModel.favorites[indexPath.row]
             cell.name.text = station.name
-            cell.distance.text = "DISTANCE"
+            cell.distance.text = "\(Int(sqrt(pow(station.coordinateX, 2) + pow(station.coordinateY, 2)).rounded())) EUS"
             cell.unfavoriteButton.tag = indexPath.row
             cell.unfavoriteButton.addTarget(self, action: #selector(unfavoriteAction), for: .touchUpInside)
             return cell
@@ -43,7 +43,10 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     @objc func unfavoriteAction(sender: UIButton) {
-        print("##### - unfavorite: \(sender.tag)")
+        let station = viewModel.favorites[sender.tag]
+        FavoriteManager.shared.removeFavorite(station: station)
+        viewModel.refreshFavorites()
+        favoritesTable.reloadData()
     }
 }
 

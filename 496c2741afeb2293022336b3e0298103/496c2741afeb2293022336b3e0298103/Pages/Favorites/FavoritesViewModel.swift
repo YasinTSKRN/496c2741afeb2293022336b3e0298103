@@ -9,4 +9,9 @@ import Foundation
 
 class FavoritesViewModel {
     var favorites: [Station] = []
+
+    func refreshFavorites() {
+        favorites.removeAll()
+        favorites.append(contentsOf: FavoriteManager.shared.getFavorites())
+    }
 }
