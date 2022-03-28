@@ -19,6 +19,8 @@ class StationsViewModel {
     var shipEndurance: Int = 0
     var leftIntegrity: Double = 0
 
+    var filteredStations: [Station] = []
+
     func fetchStations(completion: (() -> ())?) {
         dataProvider.fetchStations { [weak self] result in
             guard let strongSelf = self else { return }
@@ -97,5 +99,17 @@ class StationsViewModel {
             }
         }
         return true
+    }
+
+    func filterList(text: String) {
+        filteredStations.removeAll()
+        filteredStations.append(contentsOf: availableStations.filter { $0.name.uppercased() != "Dünya".uppercased() })
+        if text != "" {
+            filteredStations = filteredStations.filter { $0.name.uppercased().contains(text.uppercased()) }
+        }
+    }
+
+    func getIndex(of station: Station) -> Int {
+        return availableStations.firstIndex{ $0.name == station.name } ?? 0
     }
 }

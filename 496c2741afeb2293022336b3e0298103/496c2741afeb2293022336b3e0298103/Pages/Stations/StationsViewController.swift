@@ -27,6 +27,8 @@ class StationsViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var travelButton: UIButton!
     @IBOutlet weak var favoriteButton: UIButton!
+    @IBOutlet weak var searchTable: UITableView!
+    @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     
     var spaceShip: SpaceShip = SpaceShip(name: "", speed: 0, capacity: 0, endurance: 0)
     private var shownStationIndex: Int = 1
@@ -51,6 +53,12 @@ class StationsViewController: UIViewController {
         viewModel.setInitialValues(ship: spaceShip)
         self.fillInfo()
         self.fetchStations()
+        searchTable.delegate = self
+        searchTable.dataSource = self
+        searchTable.isHidden = true
+        searchField.addTarget(self, action: #selector(self.textFieldStartedChange(_:)), for: .editingChanged)
+        searchField.addTarget(self, action: #selector(self.textFieldStartedChange(_:)), for: .editingDidBegin)
+        searchField.addTarget(self, action: #selector(self.textFieldChangeEnded(_:)), for: .editingDidEnd)
     }
 
     private func fillInfo() {
@@ -86,6 +94,7 @@ class StationsViewController: UIViewController {
         travelButton.isEnabled = viewModel.canTravel(to: index)
         favoriteButton.setImage(FavoriteManager.shared.isFavorited(station: station) ? UIImage.init(systemName: "star.fill") : UIImage.init(systemName: "star"), for: .normal)
     }
+    
     @IBAction func previousStationAction(_ sender: Any) {
         self.shownStationIndex -= 1
         self.showStation(at: self.shownStationIndex)
@@ -111,6 +120,17 @@ class StationsViewController: UIViewController {
         }
         self.showStation(at: self.shownStationIndex)
     }
+
+    @objc func textFieldStartedChange(_ textField: UITextField) {
+        searchTable.isHidden = false
+        viewModel.filterList(text: textField.text ?? "")
+        heightConstraint.constant = viewModel.filteredStations.count > 15 ? 250 : CGFloat(viewModel.filteredStations.count) * SearchCell.cellHeight
+        searchTable.reloadData()
+    }
+
+    @objc func textFieldChangeEnded(_ textField: UITextField) {
+        searchTable.isHidden = true
+    }
     
     func finishGame() {
         if !viewModel.isFinished() {
@@ -119,4 +139,36 @@ class StationsViewController: UIViewController {
         travelButton.setTitle("Oyunu Bitirdiniz!", for: .normal)
         self.currentStationName.text = "Dünya"
     }
+}
+
+extension StationsViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.filteredStations.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "SearchCell", for: indexPath) as? SearchCell {
+            let station = self.viewModel.filteredStations[indexPath.row]
+            cell.stationName.text = station.name
+            return cell
+        }
+        return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return SearchCell.cellHeight
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let station = viewModel.filteredStations[indexPath.row]
+        self.shownStationIndex = viewModel.getIndex(of: station)
+        self.showStation(at: self.shownStationIndex)
+        searchField.text = station.name
+        searchField.endEditing(true)
+    }
+}
+
+class SearchCell: UITableViewCell {
+    static let cellHeight: CGFloat = 40
+    @IBOutlet weak var stationName: UILabel!
 }
