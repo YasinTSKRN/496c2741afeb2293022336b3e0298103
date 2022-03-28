@@ -29,28 +29,52 @@ class SetupViewController: UIViewController {
         nameField.layer.borderWidth = 3.0
         enduranceSlider.minimumValue = 0
         enduranceSlider.maximumValue = totalLimit
-        enduranceSlider.setValue(0, animated: false)
+        enduranceSlider.setValue(1, animated: false)
         speedSlider.minimumValue = 0
         speedSlider.maximumValue = totalLimit
-        speedSlider.setValue(0, animated: false)
+        speedSlider.setValue(1, animated: false)
         capacitySlider.minimumValue = 0
         capacitySlider.maximumValue = totalLimit
-        capacitySlider.setValue(0, animated: false)
+        capacitySlider.setValue(1, animated: false)
         self.valuesUpdated()
+        nameField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
     }
 
     private func valuesUpdated() {
         let leftPoints = totalLimit - (enduranceSlider.value.rounded() + speedSlider.value.rounded() + capacitySlider.value.rounded())
         leftPointsLabel.text = "\(Int(leftPoints))"
-        continueButton.isEnabled = leftPoints == 0
+        checkContinueState()
+    }
+
+    private func checkContinueState() {
+        if nameField.text == nil || nameField.text == "" {
+            continueButton.isEnabled = false
+            continueButton.setTitle("Isim Giriniz", for: .normal)
+            return
+        }
+        let leftPoints = totalLimit - (enduranceSlider.value.rounded() + speedSlider.value.rounded() + capacitySlider.value.rounded())
+        if leftPoints != 0 {
+            continueButton.isEnabled = false
+            continueButton.setTitle("Bütün Puanları Dağıtınız", for: .normal)
+            return
+        }
+        if enduranceSlider.value.rounded() == 0 || speedSlider.value.rounded() == 0 || capacitySlider.value.rounded() == 0 {
+            continueButton.isEnabled = false
+            continueButton.setTitle("En Az Bir Puan Veriniz", for: .normal)
+            return
+        }
+        continueButton.isEnabled = true
+        continueButton.setTitle("Devam Et", for: .normal)
+    }
+
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        checkContinueState()
     }
 
     @IBAction func sliderUpdated(_ sender: UISlider) {
         self.valuesUpdated()
     }
     
-    
-
     @IBAction func continueAction(_ sender: Any) {
         self.performSegue(withIdentifier: "OpenTabbar", sender: nil)
     }
