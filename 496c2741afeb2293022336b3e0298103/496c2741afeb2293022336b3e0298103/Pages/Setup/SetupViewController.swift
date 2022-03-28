@@ -23,9 +23,10 @@ class SetupViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        leftPointsLabel.layer.borderColor = UIColor.black.cgColor
+        let color = self.traitCollection.userInterfaceStyle == .dark ? UIColor.white : UIColor.black
+        leftPointsLabel.layer.borderColor = color.cgColor
         leftPointsLabel.layer.borderWidth = 3.0
-        nameField.layer.borderColor = UIColor.black.cgColor
+        nameField.layer.borderColor = color.cgColor
         nameField.layer.borderWidth = 3.0
         enduranceSlider.minimumValue = 0
         enduranceSlider.maximumValue = totalLimit

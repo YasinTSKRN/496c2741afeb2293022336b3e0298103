@@ -41,13 +41,17 @@ class StationsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        integrityValue.layer.borderColor = UIColor.black.cgColor
+        let color = self.traitCollection.userInterfaceStyle == .dark ? UIColor.white : UIColor.black
+        nextButton.tintColor = color
+        previousButton.tintColor = color
+        favoriteButton.tintColor = color
+        integrityValue.layer.borderColor = color.cgColor
         integrityValue.layer.borderWidth = 3.0
-        remainingTime.layer.borderColor = UIColor.black.cgColor
+        remainingTime.layer.borderColor = color.cgColor
         remainingTime.layer.borderWidth = 3.0
-        searchField.layer.borderColor = UIColor.black.cgColor
+        searchField.layer.borderColor = color.cgColor
         searchField.layer.borderWidth = 3.0
-        stationContainer.layer.borderColor = UIColor.black.cgColor
+        stationContainer.layer.borderColor = color.cgColor
         stationContainer.layer.borderWidth = 2.0
         stationContainer.layer.cornerRadius = 15.0
         viewModel.setInitialValues(ship: spaceShip)
